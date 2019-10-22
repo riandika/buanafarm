@@ -1,0 +1,90 @@
+<ion-header>
+	 
+  <ion-navbar color="baru3" class="tolhome">
+  	<button ion-button menuToggle>
+  		<ion-icon name="menu"></ion-icon>
+  	</button>
+    <ion-title>Manajemen Kebun</ion-title>
+  </ion-navbar>
+</ion-header>
+	
+	
+	
+
+<ion-content id="wadah">
+		<ion-input [value]="bulantahun" [hidden]="!waktu"></ion-input>
+		<ion-input type="number" [(ngModel)]="saldoItem.saldo" [hidden]="!saldo"></ion-input>
+			<ion-card class="cardstock" (click)="stockBrg()">
+				<ion-card-content>
+					<ion-list no-lines>
+							<ion-icon class="isi" color="wicon" name="cube"></ion-icon>
+							<div class="jiconstock">Stok Gudang</div> 
+					</ion-list>
+				</ion-card-content>
+			</ion-card>	
+			
+			<ion-card class="carduang" (click)="keuangan()">
+				<ion-card-content>
+					<ion-list no-lines>
+							<ion-icon class="isi" color="wicon" name="cash"></ion-icon>
+							<div class="jicon">Keuangan</div> 
+					</ion-list>
+				</ion-card-content>
+			</ion-card>	
+		
+			<ion-card class="cardlist" (click)="jobList()">
+				<ion-card-content>
+					<ion-list no-lines>
+							<ion-icon class="isi" color="wicon" name="list-box"></ion-icon>
+							<div class="jicon">Daftar Kegiatan</div> 
+					</ion-list>
+				</ion-card-content>
+			</ion-card>	
+			
+			<ion-card class="cardcatatan" (click)="catatan()">
+				<ion-card-content>
+					<ion-list no-lines>
+							<ion-icon class="isi" color="wicon" name="clipboard"></ion-icon>
+							<div class="jicon">Catatan</div> 
+					</ion-list>
+				</ion-card-content>
+			</ion-card>	
+			
+			<ion-card class="cardinfo" (click)="infoAkun()">
+				<ion-card-content>
+					<ion-list no-lines>
+							<ion-icon class="isi" color="wicon" name="bookmarks"></ion-icon>
+							<div class="jicon">Info Akun</div> 
+					</ion-list>
+				</ion-card-content>
+			</ion-card>	
+		
+			<ion-card class="cardhistory" (click)="deposit()">
+				<ion-card-content>
+					<ion-list no-lines>
+							<ion-icon class="isi" color="wicon" name="albums"></ion-icon>
+							<div class="jicon">Deposit</div> 
+					</ion-list>
+				</ion-card-content>
+			</ion-card>	
+		<!--
+			<ion-card class="cardchat" (click)="chat()">
+				<ion-card-content>
+					<ion-list no-lines>
+							<ion-icon color="wicon" name="chatbubbles"></ion-icon>
+							<div class="jicon">Chat</div> 
+					</ion-list>
+				</ion-card-content>
+			</ion-card>	
+		
+			<ion-card class="cardforum" (click)="stockBrg()">
+				<ion-card-content>
+					<ion-list no-lines>
+							<ion-icon color="wicon" name="people"></ion-icon>
+							<div class="jicon">Forum</div> 
+					</ion-list>
+				</ion-card-content>
+			</ion-card>	-->
+	
+</ion-content>
+

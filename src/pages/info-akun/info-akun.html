@@ -1,0 +1,67 @@
+<ion-header>
+
+  <ion-navbar color="baru3">
+    <ion-title>Info Akun</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="setting()">
+        <ion-icon name="settings"></ion-icon>
+      </button>
+    </ion-buttons> 
+  </ion-navbar> 
+</ion-header>
+
+
+<ion-content class="bg">
+
+  <div class="wadahsaya">      
+      <span class="akun">Akun Saya</span>
+  </div>
+  
+  <div class="wadahisi"> 
+    <span class="isi">Kebun</span>
+    
+        
+    <span class="isi2">{{profile.namaKebun}}</span>
+   
+  </div>
+  <div class="wadahisi">      
+    <span class="isi">Nama</span>
+    
+    <span class="isi2">{{profile.nama}}</span>
+  
+  </div>
+  <div class="wadahisi">      
+      <span class="isi">Saldo Anda</span>
+      <span class="isi2" *ngIf = "!saldoItem.saldo || saldoItem.saldo == 0">Rp. 0</span>
+      <span class="isi2" *ngIf = "saldoItem.saldo && saldoItem.saldo != 0">Rp. {{isisaldo(saldoItem.saldo)}}</span>
+  </div>
+  <div class="wadahisi">      
+    <span class="isi">Pendapatan Bulan Ini</span>
+    <span class="isi2" *ngIf = "!jumlahPen.totalPendapatan || jumlahPen.totalPendapatan == 0">Rp. 0</span>
+    <span class="isi2" *ngIf = "jumlahPen.totalPendapatan && jumlahPen.totalPendapatan != 0">Rp. {{isisaldo(jumlahPen.totalPendapatan)}}</span>
+  </div>
+  <div class="wadahisi">      
+    <span class="isi">Pengeluaran Bulan Ini</span>
+    <span class="isi2" *ngIf = "!jumlahPengeluaran.totalPengeluaran || jumlahPengeluaran.totalPengeluaran == 0">Rp. 0</span>
+    <span class="isi2" *ngIf = "jumlahPengeluaran.totalPengeluaran && jumlahPengeluaran.totalPengeluaran != 0">Rp. {{isisaldo(jumlahPengeluaran.totalPengeluaran)}}</span>
+  </div>
+  <div class="wadahisi">      
+    <span class="isi">Keuntungan Bulan Ini</span>
+    <span class="isi2" *ngIf = "!jumlahKeuntungan.totalKeuntungan || jumlahKeuntungan.totalKeuntungan <= 0">Rp. 0</span>
+    <span class="isi2" *ngIf = "jumlahKeuntungan.totalKeuntungan && jumlahKeuntungan.totalKeuntungan > 0">Rp. {{isisaldo(jumlahKeuntungan.totalKeuntungan)}}</span>
+  </div>
+  <!--<div class="wadahisi">
+    <div *ngFor="let item of profiledataRef$ | async">
+        <div class="alamat">{{item.alamat}}</div>
+    </div>      
+  </div>-->
+  <div class="wadahisi" (click)="histori()">
+    <div>
+        <div class="alamat">Histori Keuangan</div>
+    </div>      
+  </div>
+  <ion-input [(ngModel)]="depositList.tanggal" [hidden]="!perubahan"></ion-input>
+  <ion-input  [(ngModel)]="depositList.nominal" [hidden]="!perubahan"></ion-input>
+  <ion-input type="number" [(ngModel)]="depositList.nominalbiasa" [hidden]="!perubahan"></ion-input> 
+  <ion-input [(ngModel)]="depositList.status" [hidden]="!perubahan"></ion-input>
+</ion-content>

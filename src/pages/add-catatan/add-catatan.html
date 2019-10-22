@@ -1,0 +1,30 @@
+<ion-header>
+
+  <ion-navbar color="baru3">
+    <ion-title class="judulnya">Catatan</ion-title>
+    <button ion-button clear item-end class="simpan" (click)="simpan(cacatatanItem)">Simpan</button>
+  </ion-navbar>
+  
+</ion-header>
+
+
+<ion-content class="bg">
+    
+  <ion-card>
+    <ion-card-header>
+        <div>
+           
+            <span class="tglcatatan">{{formatedDate}}</span>
+       </div>
+    </ion-card-header>
+    <ion-card-content>
+        
+      <ion-list no-lines>
+          <ion-item [hidden]="!malu">
+              <ion-datetime type="datetime-local" displayFormat="DD/MM/YY HH:mm:ss" [(ngModel)]="catatanItem.currentdate"></ion-datetime>
+          </ion-item>  
+        <ion-textarea placeholder="Teks di sini..." maxLength="200" rows="100%" (input)="adjustTextarea($event)" [(ngModel)]="catatanItem.catatan"></ion-textarea>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

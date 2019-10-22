@@ -1,0 +1,40 @@
+
+<ion-header>
+
+  <ion-navbar color="baru3">
+    <ion-title>Profil</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="background">
+	<ion-card>
+		<ion-card-content>
+			<ion-list no-lines>
+				<ion-item>
+					<ion-label floating>Nama Kebun</ion-label>
+					<ion-input maxLength="20" [(ngModel)]="profile.namaKebun"></ion-input>
+				</ion-item>
+				
+				<ion-item>
+					<ion-label floating>Nama Lengkap</ion-label>
+					<ion-input maxLength="25" [(ngModel)]="profile.nama"></ion-input>
+				</ion-item>
+				
+				<ion-item>
+					<ion-label floating>Alamat</ion-label>
+					<ion-input maxLength="23" [(ngModel)]="profile.alamat"></ion-input>
+				</ion-item>
+				<div *ngIf="!profile.namaKebun || !profile.nama || !profile.alamat">
+					<button ion-button color="danger" clear block (click)="createProfile(profile)" disabled="true">Buat Profil</button>
+				</div>
+				<div *ngIf="profile.namaKebun && profile.nama && profile.alamat">
+					<button ion-button color="danger" clear block (click)="createProfile(profile)">Buat Profil</button>
+				</div>
+			</ion-list>
+		</ion-card-content>
+	</ion-card>
+</ion-content>
+
+

@@ -1,0 +1,55 @@
+<ion-header>
+
+  <ion-navbar color="baru3">
+    <ion-title>Deposit</ion-title>
+  </ion-navbar>
+  
+  <ion-toolbar class="aneh" no-border-top>
+     
+        <p class="info" [hidden]="!but1">
+          Untuk menambah uang simpanan pada manajemen kebun anda, silahkan deposit terlebih dahulu. 
+        </p>
+        <ion-input type="text" [(ngModel)]="depositList.status" [hidden]="!malu"></ion-input> 
+       <button ion-button class="butminta" color="but2" block (click)="minta()" [hidden]="!but1">Deposit</button>
+       <div [hidden]="!but2" class="inputnominal">
+         <span class="isi">Silahkan Isi</span>
+         <ion-item [hidden]="!malu">
+            <ion-input type="text" disabled="true" [(ngModel)]="depositList.harian" [value]="haribulantahun" [hidden]="!bulandantahun"></ion-input>
+        </ion-item> 
+         <ion-item [hidden]="!malu">
+            <ion-datetime type="datetime-local" displayFormat="DD/MM/YY HH:mm:ss" [(ngModel)]="depositList.tanggal"></ion-datetime>
+        </ion-item> 
+         <ion-input type="number" placeholder="{{holder}}" [(ngModel)]="depositList.nominalbiasa" #myBudget (input)="myBudget.value = format(depositList.nominalbiasa)"></ion-input>
+          
+         <ion-input placeholder="{{holder}}" [(ngModel)]="depositList.nominal" #myBudget (input)="myBudget.value = format2(depositList.nominal)" [hidden]="!nominal"></ion-input>
+        <div id="button">
+    
+          <button ion-button class="butminta" color="but2" (click)="simpan(depositList)">Kirim</button>
+          <button ion-button class="butminta" color="but" (click)="batal()">Batal</button>
+        </div>
+        
+        </div>
+        
+      </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding class="bg">
+  
+  <ion-list>
+    <ion-item *ngFor="let item of (depositListRef | async)?.slice().reverse()" (click)="selectStockItem(item)">
+        <span class="tanggal">{{item.tanggal | date : 'dd/MM/yyyy HH:mm:ss'}}</span><br>
+        <span class="berhasil" *ngIf="item.status== 'Berhasil'">{{item.status}}</span> 
+        <span class="batal" *ngIf="item.status == 'Dibatalkan'">{{item.status}}</span>         
+        <span class="nominal">Rp. {{item.nominal}}</span>
+         
+    
+    </ion-item> <!--
+    <ion-input type="text" [(ngModel)]="depositList.status" ></ion-input> 
+    <ion-input type="text" [(ngModel)]="depositList.tanggal" ></ion-input> 
+    <ion-input type="text" [(ngModel)]="depositList.nominal" ></ion-input> 
+    <ion-input type="text" [(ngModel)]="depositList.nominalbiasa" ></ion-input> -->
+    <ion-input type="number" [(ngModel)]="saldoItem.saldo" [hidden]="!saldo"></ion-input> 
+    
+  </ion-list>
+</ion-content>

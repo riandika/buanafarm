@@ -1,0 +1,107 @@
+<ion-header>
+
+  <ion-navbar color="baru3">
+    <ion-title>Ubah Pengeluaran</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="bg">
+    <ion-card>
+        <ion-card-content>
+          <ion-list no-lines>
+              <ion-input type="text" disabled="true" [(ngModel)]="pengeluaranItem.bulanTahun" [hidden]="!bulandantahun"></ion-input>
+         
+              <ion-item [hidden]="!maluin">
+                <ion-datetime type="datetime-local" displayFormat="DD/MM/YY HH:mm:ss" [(ngModel)]="pengeluaranItem.tanggal"></ion-datetime>
+              </ion-item>
+              <ion-toggle [(ngModel)]="isToggled" (ionChange)="notify()"></ion-toggle>
+              <ion-item [hidden]="!nmbrg1">
+                  <ion-label class="label1" stacked><span class="span">Barang</span></ion-label>
+                  <ion-select [(ngModel)]="pengeluaranItem.barang" class="wselect">
+                    <ion-option value="Benih Bayam" >Benih Bayam</ion-option>
+                    <ion-option value="Benih Kailan" >Benih Kailan</ion-option>
+                    <ion-option value="Benih Kale" >Benih Kale</ion-option>
+                    <ion-option value="Benih Kangkung" >Benih Kangkung</ion-option>
+                    <ion-option value="Benih Sawi Caisim" >Benih Sawi Caisim</ion-option>
+                    <ion-option value="Benih Sawi Pakchoy" >Benih Sawi Pakchoy</ion-option>
+                    <ion-option value="Benih Sawi Shamhong" >Benih Sawi Shamhong</ion-option>
+                    <ion-option value="Benih Selada" >Benih Selada</ion-option>
+                    <ion-option value="Gelas Netpot" >Gelas Netpot</ion-option>
+                    <ion-option value="Nutrisi">Nutrisi</ion-option>
+                    <ion-option value="PH Down">PH Down</ion-option>
+                    <ion-option value="Plastik Packing">Plastik Packing</ion-option>
+                    <ion-option value="Rockwool">Rockwool</ion-option>
+                    <ion-option value="Selotip">Selotip</ion-option>
+                  </ion-select>
+              </ion-item>
+              <ion-item [hidden]="!nmbrg2">
+                  <ion-label floating>Barang</ion-label>
+                  <ion-input type="text" [(ngModel)]="pengeluaranItem.barang"></ion-input>
+                </ion-item>
+                <ion-toggle [(ngModel)]="isToggled2" (ionChange)="notify2()"></ion-toggle>
+              <ion-item [hidden]="!stn1">
+                  <ion-label class="label1" stacked><span class="span">Satuan</span></ion-label>
+                  <ion-select  [(ngModel)]="pengeluaranItem.satuan" class="wselect">
+                    <ion-option value="Set">Set</ion-option>
+                    <ion-option value="Slab">Slab</ion-option>
+                    <ion-option value="Liter">Liter</ion-option>
+                    <ion-option value="Pack">Pack</ion-option>
+                    <ion-option value="Pcs">Pcs</ion-option>
+                  </ion-select>
+              </ion-item>
+              <ion-item [hidden]="!stn2">
+                  <ion-label floating>Satuan</ion-label>
+                  <ion-input type="text" [(ngModel)]="pengeluaranItem.satuan"></ion-input>
+                </ion-item>
+                <ion-item [hidden]="!stts">
+                    <ion-input type="text" [(ngModel)]="pengeluaranItem.status"></ion-input>
+                  </ion-item>
+                  <ion-item [hidden]="!stts">
+                      <ion-input type="text" [(ngModel)]="pengeluaranItem.status2"></ion-input>
+                    </ion-item>
+               <ion-item>
+                  <ion-label class="span" stacked>Harga</ion-label>
+                  <ion-input type="number" [(ngModel)]="pengeluaranItem.harga"></ion-input>
+               </ion-item>
+               <ion-item id="isiketstock" >
+                  <ion-label stacked><span class="span">Banyaknya</span></ion-label>
+                  <ion-input class="inputjml" disabled="true" [(ngModel)]="pengeluaranItem.jumlah"></ion-input>
+                  <ion-range class="rangejml" min="0" max="50" pin="true" [(ngModel)]="pengeluaranItem.jumlah" color="danger">
+                      <ion-icon range-left small name="jumlahBrg"></ion-icon>
+                      <ion-icon range-right name="jumlahBrg"></ion-icon>
+                   </ion-range>
+                  
+                </ion-item>
+                <ion-item [hidden]="!totalharga">
+                    <ion-label class="span" stacked>Total Harga</ion-label>
+                    <ion-input type="number" [(ngModel)]="pengeluaranItem.totalHarga"></ion-input>
+                 </ion-item>
+                 <ion-item>
+                  <ion-label class="span" stacked>Biaya Tambahan ?</ion-label>
+                  <ion-input type="number" [(ngModel)]="pengeluaranItem.biayaTambahan"></ion-input>
+                </ion-item>
+               <ion-item>
+                  <ion-label class="span" stacked>Catatan</ion-label>
+                  <ion-input type="text" maxLength="30" [(ngModel)]="pengeluaranItem.note"></ion-input>
+               </ion-item><br>
+               <div *ngIf="!pengeluaranItem.tanggal || !pengeluaranItem.barang || !pengeluaranItem.satuan || !pengeluaranItem.harga || !pengeluaranItem.jumlah || pengeluaranItem.harga < 0">
+                  
+                      <button ion-button color="but" block (click)="simpanPengeluaran(pengeluaranItem)" disabled ="true">Ubah</button>
+                 
+               </div>
+               <div *ngIf="pengeluaranItem.tanggal && pengeluaranItem.barang && pengeluaranItem.satuan && pengeluaranItem.harga && pengeluaranItem.jumlah && pengeluaranItem.harga >= 0">
+                  
+                      <button ion-button color="but" block (click)="simpanPengeluaran(pengeluaranItem)">Ubah</button>
+                  
+               </div>
+               <ion-input type="number" [(ngModel)]="saldoItem.saldo" [hidden]="!saldo"></ion-input> 
+               <ion-input type="number" [value]="jumlahsementara" [hidden]="!saldo"></ion-input> 
+               <ion-input type="number" [(ngModel)]="pengeluaranItem.totalHarga" [hidden]="!saldo"></ion-input> 
+          </ion-list>
+        </ion-card-content>
+        
+      </ion-card>
+
+</ion-content>

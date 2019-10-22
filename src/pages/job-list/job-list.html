@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar color="baru3">
+    <ion-title>Daftar Kegiatan</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="bg">
+    <ion-fab bottom right>
+        <button ion-fab color="but" (click)="addJob(statusItem)"><ion-icon name="add"></ion-icon></button>
+      </ion-fab> 
+  <ion-list>
+   
+      <ion-item class="isinote" *ngFor="let item of (jobListRef | async)?.slice().reverse()" (click)="selectStockItem(item)">
+        <span class="tgl" >{{item.tanggal | date : 'dd/MM/yyyy HH:mm:ss'}}</span><br>
+        <h2>{{item.job}}</h2>
+        <h3 *ngIf="item.bahan != null">Bahan : {{item.bahan}} <span *ngIf="item.notebahan">, {{item.notebahan}}</span></h3>
+        <h3 *ngIf="item.jumlah != null">Penggunaan : {{item.jumlah}} <span *ngIf="item.satuan != null"> {{item.satuan}}</span></h3>
+        <span class="note" *ngIf="item.note">catatan : {{item.note}}</span>
+          
+      </ion-item>
+     
+  </ion-list>
+</ion-content>

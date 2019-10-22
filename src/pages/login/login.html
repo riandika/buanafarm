@@ -1,0 +1,67 @@
+<ion-content class="background">
+	<h1>MANAJEMEN KEBUN</h1>
+	<ion-card>
+		<ion-card-header>
+			LOGIN
+		</ion-card-header>
+		<ion-card-content>
+			<ion-list no-lines>
+				<ion-item>
+					<ion-label floating>Email</ion-label>
+					<ion-input type="text" [(ngModel)]="user.email"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label floating>Password</ion-label>
+					<ion-input type="password" [(ngModel)]="user.password"></ion-input>
+				</ion-item>
+				<ion-item class="lupa">
+					<p>Lupa Password ? <a (click)="reset()">Reset</a></p>
+				</ion-item>
+				<div *ngIf="!user.email || !user.password">
+					<button ion-button color="danger" block (click)="login(user)" disabled="true">LOGIN</button>
+				</div>
+				<div *ngIf="user.email && user.password">
+						<button ion-button color="danger" block (click)="login(user)">LOGIN</button>
+					</div>
+				
+				<br>
+				<ion-item class="belumpunya">
+					<p>Belum Punya Akun ? <a (click)="register()">Sign up</a></p>
+				</ion-item>
+				
+
+			</ion-list>
+		</ion-card-content>
+	</ion-card>
+</ion-content>
+
+
+<!--<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	
+	<ion-item>
+		<ion-label floating>Username</ion-label>
+		<ion-input type="text" [(ngModel)]="user.email"></ion-input>
+	</ion-item>
+
+	<ion-item>
+		<ion-label floating>Password</ion-label>
+		<ion-input type="password" [(ngModel)]="user.password"></ion-input>
+	</ion-item>
+
+	<div id="button">
+		<button ion-button block (click)="login(user)">Log in</button>
+		<button ion-button color="light" (click)="register()">Sign up</button>
+	
+	</div>
+
+</ion-content>
+-->

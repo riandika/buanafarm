@@ -1,0 +1,108 @@
+
+<ion-header>
+
+  <ion-navbar color="baru3">
+    <ion-title>Keuangan</ion-title>
+  </ion-navbar>
+  <ion-toolbar no-border-top>
+    <ion-segment class="tolbar" color="wicon" [(ngModel)]="listkeuangan">
+      <ion-segment-button  value="dapat">
+        Pendapatan
+      </ion-segment-button>
+      <ion-segment-button value="keluar">
+        Pengeluaran
+      </ion-segment-button>
+      <ion-segment-button value="ambil">
+          Pengambilan
+        </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+  <ion-toolbar class="aneh" no-border-top *ngIf="listkeuangan=='ambil'">
+     
+      <p class="info">
+        Untuk mengurangi uang simpanan pada manajemen kebun anda, silahkan ambil terlebih dahulu. 
+      </p>
+      
+     
+       <span class="isi">Silahkan Isi</span>
+       
+       <ion-item [hidden]="!maluin">
+          <ion-datetime type="datetime-local" displayFormat="DD/MM/YY HH:mm:ss" [(ngModel)]="pengambilanList.tanggal"></ion-datetime>
+      </ion-item> 
+       <ion-input type="number" placeholder="Nominal" [(ngModel)]="pengambilanList.nominal"></ion-input>
+        
+      
+      <div id="button">
+  
+        <button ion-button class="butminta" color="but2" (click)="ambil()">Ambil</button>
+      
+      </div>
+      
+     
+      
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="bg">
+    
+        <ion-fab bottom right>
+            <div *ngIf="listkeuangan=='dapat' || listkeuangan=='keluar'">
+            <button ion-fab color="but" (click)="tambah()"><ion-icon name="add"></ion-icon></button>
+          </div>
+          </ion-fab> 
+          
+    
+  
+     
+      <br>
+  <div [ngSwitch]="listkeuangan">
+    <ion-input disabled="true" [(ngModel)]="bulantahunskrg" [value]="bulantahun" [hidden]="!bulanbaru"></ion-input> 
+    <ion-list *ngSwitchCase="'dapat'">
+      
+      <ion-item *ngFor="let item of (pendapatanRef | async)?.slice().reverse()" (click)="selectPendapatan(item)">
+          
+          
+                <div class="tanggal">{{item.tanggal | date : 'dd/MM/yyyy HH:mm:ss'}}</div><br>
+                <div class="isi1" *ngIf="item.jumlah == 0">Rp. 0</div>
+                <div class="isi1" *ngIf="item.jumlah != 0">Rp. {{isi(item.jumlah)}}</div>
+                <div class="isi">Sumber : {{item.sumber}}</div>
+                <div class="note" *ngIf="item.note">*catatan : {{item.note}}</div>
+         
+            
+          </ion-item>
+           
+       
+      
+      
+     
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'keluar'">  
+      <ion-item *ngFor="let item of (pengeluaranRef | async)?.slice().reverse()" (click)="selectPengeluaran(item)">
+        <div class="tanggal">{{item.tanggal | date : 'dd/MM/yyyy HH:mm:ss'}}</div>
+        <span class="isi1">{{item.barang}}</span><br>
+        <span class="isi" *ngIf="item.harga == 0">Harga : Rp. 0</span>
+        <span class="isi" *ngIf="item.harga != 0">Harga : Rp. {{isi(item.harga)}} </span><br>
+        <span class="isi">Jumlah : {{item.jumlah}} {{item.satuan}}</span><br>
+        <span class="isi" *ngIf="item.biayaTambahan">biaya tambahan : Rp. {{isi(item.biayaTambahan)}}<br></span>
+        <span class="isi" *ngIf="item.totalHarga == 0">Total Harga : Rp. 0</span>
+        <span class="isi" *ngIf="item.totalHarga != 0">Total Harga : Rp. {{isi(item.totalHarga)}}</span><br>
+        <span class="note" *ngIf="item.note">*catatan : {{item.note}}</span>
+       
+      </ion-item>
+
+    </ion-list>
+    <ion-list *ngSwitchCase="'ambil'" class="listambil"> 
+        
+        <ion-item *ngFor="let item of (pengambilanListRef | async)?.slice().reverse()" (click)="selectStockItem(item)">
+            <span class="tanggal">{{item.tanggal | date : 'dd/MM/yyyy HH:mm:ss'}}</span><br>        
+            <span class="nominal">Rp. {{isi(item.nominal)}}</span>
+           
+        </ion-item>
+  
+      </ion-list>
+      
+  </div>
+  
+</ion-content>

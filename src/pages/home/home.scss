@@ -1,0 +1,164 @@
+page-home {
+	
+	#wadah {
+		//background: linear-gradient(10deg,#4e5efc,#4ee7fc);
+		//background: linear-gradient(10deg,#4e5efc,#4ee7fc);
+		//background: linear-gradient(10deg,#0e1a7e,#3992db);
+		background-image: url('../assets/imgs/bgimg2.jpg');
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		
+		padding-bottom: 1%;
+		
+	}
+	/*
+	.bg1 {
+		width: 100%;
+		height: 100%;
+		background-image: url('../assets/imgs/bg8.png');
+		background-repeat: repeat;
+		background-size: 35%;
+		opacity: 0.5;
+		filter: alpha(opacity=50);
+	
+	}
+	*/
+	/*img {
+		margin-top: -4%;
+		width: 23%;
+		height: auto;
+		opacity: 0.3;
+		
+	}*/
+	.scroll-content{
+		text-align: center;
+	}
+	ion-card.cardstock{
+		
+	
+		//padding: -3%;
+		//margin: -3%;
+		width: 47%;
+		height: 31%;
+		background: linear-gradient(10deg,#f87102,#f59b35);
+		border-radius: 1px; 
+		float: left;
+		margin-left: 2%;
+		margin-right: 2%;
+		margin-top: 2%;
+		margin-bottom: 0%;
+	}
+	
+	ion-icon.isi {
+		margin-top: 18px;
+		
+		font-size: 50px;
+		//padding: 6% !important;
+		padding-bottom: 5%;
+		
+	}
+	.jicon {
+		color: #f0ebeb;
+		font-family: sans-serif;
+		
+		
+	}
+	.jiconstock {
+		color: #f0ebeb;
+		font-family: sans-serif;
+		font-size: 13px;
+		
+	}
+	ion-card.carduang{
+		
+		
+		//padding: -3%;
+		//margin: -3%;
+		float: right;
+		width: 47%;
+		height: 31%;
+		background: linear-gradient(10deg,#01813b,#27df5e);
+		border-radius: 1px; 
+		margin-right: 2%;
+		margin-left: 0%;
+		margin-top: 2%;
+		margin-bottom: 0%;
+	}
+	ion-card.cardlist{
+		margin-right: 2%;
+		margin-left: 2%;
+		margin-top: 2%;
+		margin-bottom: 0%;
+		float: left;
+		
+		width: 47%;
+		height: 31%;
+		background: linear-gradient(10deg,#0465a5,#66dffd);
+		border-radius: 1px; 
+	}
+	ion-card.cardcatatan{
+		margin-right: 2%;
+		margin-left: 0%;
+		margin-top: 2%;
+		margin-bottom: 0%;
+		float: right;
+		
+		width: 47%;
+		height: 31%;
+		background: linear-gradient(10deg,#587c04,#92f343);
+		border-radius: 1px; 
+	}
+	ion-card.cardinfo{
+		
+		margin-right: 2%;
+		margin-left: 2%;
+		margin-top: 2%;
+		margin-bottom: 1%;
+		float: left;
+		
+		width: 47%;
+		height: 31%;
+		background: linear-gradient(10deg,#ac010f,#f12652);
+		border-radius: 1px; 
+	}
+	ion-card.cardhistory{
+		
+		margin-right: 2%;
+		margin-left: 0%;
+		margin-top: 2%;
+		margin-bottom: 1%;
+		float: right;
+		
+		width: 47%;
+		height: 31%;
+		background: linear-gradient(10deg,#690e53,#ec04c6);
+		border-radius: 1px; 
+	}
+	/*
+	ion-card.cardchat{
+		
+		margin-right: 2%;
+		margin-left: 2%;
+		margin-top: 2%;
+		margin-bottom: 1%;
+		float: left;
+		
+		width: 47%;
+		height: 23%;
+		background: linear-gradient(10deg,#046346,#19b86e);
+		border-radius: 1px; 
+	}
+	ion-card.cardforum{
+		
+		margin-right: 2%;
+		margin-left: 0%;
+		margin-top: 2%;
+		margin-bottom: 1%;
+		float: right;
+		
+		width: 47%;
+		height: 23%;
+		background: linear-gradient(10deg,#150b44,#271bd3);
+		border-radius: 1px; 
+	} */
+}

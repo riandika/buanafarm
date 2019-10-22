@@ -1,0 +1,41 @@
+<ion-header>
+
+  <ion-navbar color="baru3">
+    <ion-title>Catatan</ion-title>
+    <ion-fab top right>
+      <button ion-fab color="but" (click)="addcatatan()" mini><ion-icon name="add" class="ic"></ion-icon></button>
+    </ion-fab>
+  </ion-navbar>
+  
+
+</ion-header>
+
+
+<ion-content padding class="bg">
+    
+  <ion-list>
+      
+      
+          <ion-item-sliding class="isinote" *ngFor="let item of (catatanListRef | async)?.slice().reverse()">
+              
+              <ion-item class="isinote">
+                <h2>{{item.catatan}}</h2><span class="tgl">{{item.currentdate | date : 'dd/MM/yyyy HH:mm:ss'}}</span>
+              
+              </ion-item>
+                
+              <ion-item-options side="right">
+                <button ion-button color="secondary" (click)="ubah(item)">
+                  <ion-icon name="create"></ion-icon>
+                  Ubah
+                </button>
+                <button ion-button color="danger" (click)="hapus(item)">
+                  <ion-icon name="trash"></ion-icon>
+                  Hapus
+                </button>
+              </ion-item-options>
+           
+            </ion-item-sliding>
+      
+    
+  </ion-list>
+</ion-content>

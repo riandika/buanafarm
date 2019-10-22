@@ -1,0 +1,97 @@
+page-deposit {
+    .bg {
+        
+        background-image: url('../assets/imgs/bgimg2.jpg');
+		background-repeat: no-repeat;
+        background-size: 100% 100%;
+        
+        
+    }
+    .toolbar-background {
+        //background-image: url('../assets/imgs/bgimg2.jpg');
+		//background-repeat: no-repeat;
+        background-color:transparent;
+    }
+   
+    .info {
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana;
+        color: white;
+        font-size: 11px;
+        text-align: left;
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-top: 1px;
+        padding-bottom: 5px;
+        //margin-top: -68px;
+    }
+    /*.info2 {
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana;
+        color: white;
+        font-size: 11px;
+        text-align: left;
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-top: 1px;
+        padding-bottom: 5px;
+    }*/
+    .butminta {
+        border-radius: 7px;
+        
+    }
+    .isi {
+        font-family:sans-serif;
+        color: white;
+        font-size: 12px;
+        text-align: left;
+        
+        //padding-left: 4px;
+        //padding-right: 4px;
+        //padding-top: 1px;
+        padding-bottom: 3px;
+    }
+    #button {
+		display: flex;
+		flex-direction: row;
+	}
+
+	#button button {
+		flex: 1;
+
+
+    }
+    ion-input{
+        border: #b69505 solid 1px;
+        border-radius: 6px;
+        //border: #b69505 solid 1px;
+        color:#f5dfe3;
+      
+    }
+    
+    ion-item.item {
+       
+        max-width: 98% !important;
+        margin-left: 1%;
+        margin-right: 1%;
+        background: rgba(31, 30, 30, 0.548);
+        color: color($colors, wicon);
+        border-radius: 8px;
+       
+    }
+    .tanggal {
+        font-size: 11px;
+    }
+    .berhasil {
+        font-size: 13px;
+        color: #6ac714;
+    }
+    .batal {
+        font-size: 13px;
+        color: #f14f4f;
+    }
+    .nominal {
+        font-size: 13px;
+        float: right;
+    }
+  
+
+}

@@ -1,0 +1,39 @@
+page-stock-list {
+  
+    .bg {
+        
+        background-image: url('../assets/imgs/bgimg2.jpg');
+		background-repeat: no-repeat;
+        background-size: 100% 100%;
+        
+        
+    }
+    ion-item.item {
+        
+        max-width: 90% !important;
+        margin-left: 5%;
+        margin-right: 5%;
+        background: rgba(31, 30, 30, 0.548);
+        color: color($colors, wicon);
+        border-radius: 8px;
+        
+    }.tanggal {
+        font-size: 10px;
+        float: right;
+        color: rgb(245, 243, 243);
+    }
+    .judul {
+        font-size: 14px;
+        
+        color: rgb(245, 243, 243);
+    }
+    .isi {
+        font-size: 13px;
+        color: rgb(194, 191, 191);
+    }
+    .note {
+        color: #fd4d73;
+        font-size: 12px;
+    }
+  
+}

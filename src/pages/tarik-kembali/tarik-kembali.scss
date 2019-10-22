@@ -1,0 +1,66 @@
+page-tarik-kembali {
+    .bg {
+        
+        background-image: url('../assets/imgs/bgimg2.jpg');
+		background-repeat: no-repeat;
+        background-size: 100% 100%;
+        
+        
+    }
+    .fab[mini] {
+        margin-top: -67px;
+        width: 30px;
+        height: 30px;
+        margin-left: 4px;
+    }
+    .toolbar-background {
+        background-color:transparent;
+    }
+    .wadahinfo {
+        //background: rgba(31, 30, 30, 0.562);
+        //margin-top: 20px;
+        //height: 45px;
+        padding: 5px;
+        margin-left: 45px;
+        text-align: justify;
+        
+        
+    }
+    .info {
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana;
+        color: white;
+        font-size: 11px;
+        
+        //text-align: right;
+    }
+    .wadahlist {
+        margin-top: 15px;
+       //margin-bottom: 0px;
+    }
+    ion-item.item {
+       
+        max-width: 88% !important;
+        margin-left: 6%;
+        margin-right: 6%;
+        
+        background: rgba(31, 30, 30, 0.548);
+        color: color($colors, wicon);
+        border-radius: 8px;
+       
+    }
+    .tanggal {
+        font-size: 11px;
+    }
+    .berhasil {
+        font-size: 13px;
+        color: #6ac714;
+    }
+    .batal {
+        font-size: 13px;
+        color: #f14f4f;
+    }
+    .nominal {
+        font-size: 13px;
+        float: right;
+    }
+}

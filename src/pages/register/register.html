@@ -1,0 +1,47 @@
+
+<ion-header>
+
+  <ion-navbar color="baru3">
+    <ion-title>Buat Akun</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="background">
+	<ion-card>
+		<ion-card-content>
+			<ion-list no-lines>
+				<ion-item>
+					<ion-label floating>Email</ion-label>
+					<ion-input type="text" [(ngModel)]="user.email"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label floating>Password</ion-label>
+					<ion-input type="password" [(ngModel)]="user.password"></ion-input>
+				</ion-item>
+				<div *ngIf="!user.email || !user.password">
+					<button ion-button color="danger" block (click)="register(user)" disabled="true">Lanjut</button>
+				</div>
+				<div *ngIf="user.email && user.password">
+					<button ion-button color="danger" block (click)="register(user)">Lanjut</button>
+				</div>
+			</ion-list>
+		</ion-card-content>
+	</ion-card>
+</ion-content>
+
+<!--
+<ion-content padding>
+	<ion-item>
+		<ion-label floating>Username</ion-label>
+		<ion-input type="text" [(ngModel)]="user.email"></ion-input>
+	</ion-item>
+
+	<ion-item>
+		<ion-label floating>Password</ion-label>
+		<ion-input type="password" [(ngModel)]="user.password"></ion-input>
+	</ion-item>
+
+	<button ion-button block (click)="register(user)">Next</button>
+</ion-content>
+-->

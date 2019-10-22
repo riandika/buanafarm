@@ -1,0 +1,165 @@
+<ion-header [hidden]="!list1">
+
+    <ion-navbar color="baru3">
+      <ion-title>Masukkan Kegiatan</ion-title>
+      
+    </ion-navbar>
+    
+  
+  </ion-header>
+  
+  
+  <ion-content class="bg">
+    <ion-card [hidden]="!list1">
+      <ion-card-content>
+          
+        <ion-list no-lines>
+          <ion-item *ngIf="statusItem.status == 0">
+            <p class="span">Barang tambahan ? <a class="spanc" (click)="pilih()">Pilih Barang</a></p>
+          </ion-item>
+          <ion-item *ngIf="statusItem.status == 1">
+            <p class="span">Batal Barang tambahan ? <a class="spanc" (click)="batal()">Batal</a></p>
+          </ion-item>
+          
+            <div class="pilihan" *ngIf="statusItem.status == 1">
+              
+              <span>{{"Barang Pilihan : " + stockItem.namaBrg}}</span><br>
+              <span>{{"Sisa Stock : " + stockItem.jumlahBrg + " " + stockItem.satuan+ " "}} </span>
+              <span class="perhatian" *ngIf="statusItem.status == 1 && joblistItem.jumlah > stockItem.jumlahBrg">
+                  , Tidak boleh lebih dari stock
+              </span>
+              <br>
+              <span *ngIf="stockItem.note">*catatan : {{stockItem.note}}</span> 
+            </div>
+            
+         
+          <ion-item [hidden]="!list3">
+            <ion-label class="span" floating>Barang</ion-label>
+            <ion-input type="text" [(ngModel)]="stockItem.namaBrg"></ion-input>
+          </ion-item>
+          <ion-item [hidden]="!list3">
+            <ion-label class="span" floating>Jumlah</ion-label>
+            <ion-input type="text" [(ngModel)]="stockItem.jumlahBrg"></ion-input>
+          </ion-item>
+          <ion-item [hidden]="!list3">
+            <ion-label class="span" floating>Satuan</ion-label>
+            <ion-input type="text" [(ngModel)]="stockItem.satuan"></ion-input>
+          </ion-item>
+          <ion-item [hidden]="!list3">
+            <ion-label class="span" floating>Catatan</ion-label>
+            <ion-input type="text" [(ngModel)]="stockItem.note"></ion-input>
+         </ion-item>
+            <ion-item>
+                <ion-label class="span" stacked>Tanggal Kegiatan</ion-label>
+                <ion-datetime type="datetime-local" displayFormat="DD/MM/YY HH:mm:ss" [(ngModel)]="joblistItem.tanggal"></ion-datetime>
+            </ion-item>
+           
+            <ion-item>
+              <ion-label class="span" stacked>Kegiatan</ion-label>
+              <ion-input type="text" maxLength="50" [(ngModel)]="joblistItem.job"></ion-input>
+           </ion-item>
+           <!-- (ionChange)="onSelectChange($event)" untuk change kode <ion-item id="isiketstock" [hidden]="!value">
+              
+              <ion-input type="text" placeholder="Ketik Manual" [(ngModel)]="stockItem.namaBrg"></ion-input>  
+              
+            </ion-item>-->
+      
+            
+            
+            
+           
+            <!-- ini utk waktu <ion-input type="text" placeholder="Ketik Manual" [(ngModel)]="stockItem.currentdate" [value]="formatedDate" [hidden]="!malu"></ion-input>-->
+            
+            <!--<ion-item>
+                <ion-label floating>Nama Barang</ion-label>
+                <ion-input type="text" [(ngModel)]="stockItem.namaBrg" ></ion-input>
+             </ion-item>  -->
+             
+
+                
+              <ion-item *ngIf="statusItem.status == 1">
+                <ion-label stacked><span class="span">Jumlah</span></ion-label>
+                <ion-input class="inputjml" disabled="true" [(ngModel)]="joblistItem.jumlah"></ion-input>
+                <ion-range class="rangejml" min="0" max="50" pin="true" [(ngModel)]="joblistItem.jumlah" color="danger">
+                    <ion-icon range-left small name="jumlah"></ion-icon>
+                    <ion-icon range-right name="jumlah"></ion-icon>
+                 </ion-range>
+                
+              </ion-item> 
+           
+              
+             
+                
+             
+              
+              <ion-item>
+                  <ion-label class="span" stacked>Catatan</ion-label>
+                  <ion-input type="text" maxLength="30" [(ngModel)]="joblistItem.note"></ion-input>
+               </ion-item>
+               
+              <br>
+              <div *ngIf="statusItem.status == 0">
+                <div *ngIf="!joblistItem.job">
+                    <div id="button">
+                        <button ion-button color="but" block (click)="simpanJob(joblistItem)" disabled ="true">Simpan</button>
+                      </div>
+                </div>
+                <div *ngIf="joblistItem.job">
+                    <div id="button">
+                        <button ion-button color="but" block (click)="simpanJob(joblistItem)">Simpan</button>
+                      </div>
+                </div>
+              </div>
+              <div *ngIf="statusItem.status == 1">
+                  <div *ngIf="!joblistItem.job || !joblistItem.jumlah || joblistItem.jumlah > stockItem.jumlahBrg">
+                      <div id="button">
+                          <button ion-button color="but" block (click)="simpanJob(joblistItem)" disabled ="true">Simpan</button>
+                        </div>
+                  </div>
+                  <div *ngIf="joblistItem.job && joblistItem.jumlah && joblistItem.jumlah <= stockItem.jumlahBrg">
+                      <div id="button">
+                          <button ion-button color="but" block (click)="simpanJob(joblistItem)">Simpan</button>
+                        </div>
+                  </div>
+                </div>
+              
+            
+              <div [hidden]="!statushilang">
+                <ion-label class="span" floating>Bahan</ion-label>
+                <ion-input type="text" [(ngModel)]="joblistItem.bahan"></ion-input>
+              </div>
+              <div [hidden]="!statushilang">
+                <ion-label class="span" floating>Status</ion-label>
+                <ion-input type="text" [(ngModel)]="statusItem.status"></ion-input>
+              </div>
+              <div [hidden]="!statushilang">
+                <ion-label class="span" floating>notebahan</ion-label>
+                <ion-input type="text" [(ngModel)]="joblistItem.notebahan"></ion-input>
+              </div>  
+                  
+        </ion-list>
+       
+    
+      </ion-card-content>
+      
+    </ion-card>
+    <ion-fab top left [hidden]="!list2">
+        <button ion-fab color="but" (click)="close()" mini><ion-icon name="arrow-round-back"></ion-icon></button>
+    </ion-fab> 
+    
+    
+    <ion-list [hidden]="!list2">
+        
+        <ion-item class="list2" *ngFor="let item of (stockListRef | async)?.slice().reverse()" (click)="selectStockItem(item)">
+            <div class="tanggal">{{item.tanggal}}</div>  
+            <span class="judul">{{item.namaBrg}}</span><br>
+            <span class="isi">Jumlah : {{item.jumlahBrg}}</span> <span class="isi">{{item.satuan}}</span><br>
+            
+            <span class="note" *ngIf="item.note">catatan : {{item.note}}</span>
+                       
+        </ion-item>
+       
+    </ion-list>
+            
+  </ion-content>
+  

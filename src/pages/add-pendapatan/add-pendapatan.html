@@ -1,0 +1,47 @@
+<ion-header>
+
+  <ion-navbar color="baru3">
+    <ion-title>Tambah Pendapatan</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="bg">
+    <ion-card>
+        <ion-card-content>
+          <ion-list no-lines>
+            <ion-input type="text" disabled="true" [(ngModel)]="pendapatanItem.bulanTahun" [value]="bulantahun" [hidden]="!bulandantahun"></ion-input>
+            <ion-item [hidden]="!maluin">
+              <ion-datetime type="datetime-local" displayFormat="DD/MM/YY HH:mm:ss" [(ngModel)]="pendapatanItem.tanggal"></ion-datetime>
+            </ion-item> 
+              
+              <ion-item>
+                  <ion-label class="span" stacked>Sumber</ion-label>
+                  <ion-input type="text" maxLength="50" [(ngModel)]="pendapatanItem.sumber"></ion-input>
+               </ion-item>
+               <ion-item>
+                  <ion-label class="span" stacked>Nominal</ion-label>
+                  <ion-input type="number" [(ngModel)]="pendapatanItem.jumlah"></ion-input>
+               </ion-item>
+               <ion-item>
+                  <ion-label class="span" stacked>Catatan</ion-label>
+                  <ion-input type="text" maxLength="30" [(ngModel)]="pendapatanItem.note"></ion-input>
+               </ion-item><br>
+               <div *ngIf="!pendapatanItem.sumber || !pendapatanItem.jumlah || pendapatanItem.jumlah <= 0">
+                  
+                      <button ion-button color="but" block (click)="simpanPendapatan(pendapatanItem)" disabled ="true">Simpan</button>
+                 
+               </div>
+               <div *ngIf="pendapatanItem.sumber && pendapatanItem.jumlah && pendapatanItem.jumlah > 0">
+                  
+                      <button ion-button color="but" block (click)="simpanPendapatan(pendapatanItem)">Simpan</button>
+                  
+               </div>
+               <ion-input type="number" [(ngModel)]="saldoItem.saldo" [hidden]="!saldo"></ion-input> 
+          </ion-list>
+        </ion-card-content>
+        
+      </ion-card>
+
+</ion-content>

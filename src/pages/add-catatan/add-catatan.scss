@@ -1,0 +1,44 @@
+page-add-catatan {
+    .bg {
+        width: 100%;
+        height: 100%;
+        //background-image: url('../assets/imgs/bgimg2.jpg');
+		//background-repeat: no-repeat;
+		//background-size: 100% 100%;
+    }
+    .judulnya {
+       position: absolute;
+        top: 15px;
+        float: left;
+    }
+    .simpan {
+        //clear: both;
+        float: right;
+        color: white;
+    }
+    .tglcatatan {
+        color:rgb(172, 168, 168);
+        font-family: sans-serif;
+        font-size: 12px;
+        float: right;
+    }
+    ion-card.card{
+        //background: rgba(232,230, 230, 0.7px);
+        //background: rgba(12, 157, 214, 0.7px);
+        background: rgba(31, 30, 30, 0);
+        border-radius: 0px; 
+       
+        
+    }
+   
+	.item{
+        background: rgba(232,230, 230, 0px);
+      
+    }
+    ion-textarea{
+        //border-bottom: #fd4d73 solid 1px;
+        color:#3a3a3a;
+       max-height: 100%;
+    }
+  
+}

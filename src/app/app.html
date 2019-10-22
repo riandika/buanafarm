@@ -1,0 +1,88 @@
+<div *ngIf="showSplash" class="splash">
+        <div class="sk-circle">
+                <div class="sk-circle1 sk-child"></div>
+                <div class="sk-circle2 sk-child"></div>
+                <div class="sk-circle3 sk-child"></div>
+                <div class="sk-circle4 sk-child"></div>
+                <div class="sk-circle5 sk-child"></div>
+                <div class="sk-circle6 sk-child"></div>
+                <div class="sk-circle7 sk-child"></div>
+                <div class="sk-circle8 sk-child"></div>
+                <div class="sk-circle9 sk-child"></div>
+                <div class="sk-circle10 sk-child"></div>
+                <div class="sk-circle11 sk-child"></div>
+                <div class="sk-circle12 sk-child"></div>
+              </div>
+</div>
+
+<ion-menu id="myMenu" [content]="content">
+				
+        <ion-header no-border>
+                <ion-toolbar class="tol1" color="baru4">
+                        <ion-title id="judul">	
+                        
+                        <span class="nmkebun">{{profile.namaKebun}}</span><br>
+                        <span class="nmuser">{{profile.nama}}</span><br>
+                        <span class="alamat"  *ngIf="profile.alamat">Alamat: {{profile.alamat}}</span>	 
+                        </ion-title>
+                </ion-toolbar>
+        </ion-header>
+                
+        <ion-content id="slide">
+                
+                <ion-list>
+                        <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+                                {{p.title}}
+                        </button>
+                </ion-list>
+                
+                <ion-card class="coba">
+                        
+                        <ion-card-content>
+                               
+                                
+                           
+                                
+                                <ion-list no-lines>
+                                        
+                                        <div class="set" (click)="set()">
+                                
+                                                <ion-list no-lines>
+                                                        <ion-icon class="icon1" color="wicon" name="settings"></ion-icon>
+                                                        <span class="jcon">Profil</span> 
+                                                </ion-list>
+                                                
+                                                
+                                        </div>	
+                                      
+
+                                        <div class="logout" (click)="logout()">
+                                                
+                                                <ion-list no-lines>
+                                                        <ion-icon class="icon2" color="wicon" name="lock"></ion-icon>
+                                                        <span class="lcon">Log Out</span> 
+                                                </ion-list>
+                                                      
+                                        </div>
+                                        
+                                        <!--<button id="set" ion-button clear block (click)="set()"> 
+                                                <ion-icon class="setting" name="settings"></ion-icon>
+                                                <span class="sdm">Edit Profile</span>
+                                        </button> -->
+                                        <!--<button id="logout" ion-button clear block (click)="logout()"> 
+                                                <ion-icon class="kunci" name="lock"></ion-icon>
+                                                <span class="sdm2">Log Out</span> 
+                                        </button>-->
+                                        <div class="versi">versi 1.0</div>
+                                </ion-list>
+                        </ion-card-content>
+                </ion-card>	
+            
+        
+        </ion-content>
+        
+
+</ion-menu>
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+
+<!--<ion-nav [root]="rootPage"></ion-nav>-->

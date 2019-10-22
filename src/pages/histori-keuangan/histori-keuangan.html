@@ -1,0 +1,58 @@
+<ion-header>
+
+  <ion-navbar color="baru3">
+    <ion-title>Histori Keuangan</ion-title>
+    
+    <ion-buttons end *ngIf="bisahapus == 1"> 
+  
+         <button ion-button icon-only (click)="hapus()" disabled="true" [hidden]="!ww">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+       
+    </ion-buttons> 
+    <ion-buttons end *ngIf="bisahapus != 1"> 
+  
+      <button ion-button icon-only (click)="hapus()">
+       <ion-icon name="trash"></ion-icon>
+     </button>
+    
+ </ion-buttons> 
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="bg">
+  <br>
+  <ion-list>
+    <ion-input disabled="true" [(ngModel)]="bisahapus" [hidden]="!ee"></ion-input>
+      <ion-item *ngFor="let item of (historiJumlahRef | async)?.slice().reverse()">
+        <div class="tanggal" >Bulan  {{item.historiBulanTahun}}</div><br>
+        <div class="isi1" *ngIf="item.historiPendapatan > 0">Pendapatan <span>Rp. {{isi(item.historiPendapatan)}}</span></div>
+        <div class="isi1" *ngIf="item.historiPendapatan == 0">Pendapatan <span>Rp. 0</span></div>
+        
+        <div *ngFor="let item2 of (historiPengeluaranRef | async)?.slice().reverse()">
+            
+                <div class="isi1" *ngIf="item2.historiBulanTahun == item.historiBulanTahun">
+                        <div *ngIf="item2.historiPengeluran > 0">Pengeluaran <span>Rp. {{isi(item2.historiPengeluran)}}</span></div>
+                        <div *ngIf="item2.historiPengeluran == 0">Pengeluaran <span>Rp. 0</span></div>
+                </div>
+          
+        </div>
+        <div *ngFor="let item3 of (historiKeuntunganRef | async)?.slice().reverse()">
+                        <div class="isi1" *ngIf="item3.historiBulanTahun == item.historiBulanTahun">
+                            <div *ngIf="item3.historiKeuntungan < 0">Kerugian <span>Rp. {{isi(item3.historiKeuntungan)}}</span></div>
+                            <div *ngIf="item3.historiKeuntungan == 0">Keuntungan <span>Rp. 0</span></div>
+                            <div *ngIf="item3.historiKeuntungan > 0">Keuntungan <span>Rp. {{isi(item3.historiKeuntungan)}}</span></div>
+                        </div> 
+                            
+        </div> 
+        <div *ngFor="let item4 of (historiSisaUangRef | async)?.slice().reverse()">
+            <div class="isi1" *ngIf="item4.historiBulanTahun == item.historiBulanTahun">
+                <div *ngIf="item4.historiSisa == 0">Total Saldo Anda <span>Rp. 0</span></div>
+                <div *ngIf="item4.historiSisa != 0">Total Saldo Anda <span>Rp. {{isi(item4.historiSisa)}}</span></div>
+            </div> 
+        </div>
+      </ion-item>
+    
+  </ion-list>
+</ion-content>

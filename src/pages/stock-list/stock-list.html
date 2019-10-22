@@ -1,0 +1,44 @@
+
+<ion-header class="kepala">
+
+  <ion-navbar color="baru3">
+    <ion-title>Daftar Stok</ion-title>
+    
+  </ion-navbar>
+    
+  <!--<ion-searchbar class="carilist" [(ngModel)]="queryText" (ionInput)="updateItems()"></ion-searchbar>-->
+    
+  
+
+</ion-header>
+
+
+<ion-content class="bg">
+  <ion-fab bottom right>
+    <button ion-fab color="but" (click)="tambahStock()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>  
+  <br>
+  
+  <ion-list>
+      
+      <ion-item *ngFor="let item of (stockListRef | async)?.slice().reverse()" (click)="selectStockItem(item)">
+          <div class="tanggal">{{item.tanggal | date : 'dd/MM/yyyy HH:mm:ss'}}</div>
+          <span class="judul">{{item.namaBrg}}</span><br>
+          <span class="isi">Jumlah : {{item.jumlahBrg}}</span> <span class="isi"> {{item.satuan}}</span><br>
+          
+          <span class="note" *ngIf="item.note">catatan : {{item.note}}</span>
+         
+  </ion-item>
+        <!--
+    <ion-item *ngFor="let item of filteredItems" (click)="selectStockItem(item)" [hidden]="!kedua">
+      <h2>Barang        : {{item.namaBrg}}</h2>
+      <h3>Jumlah Stock : {{item.jumlahBrg}} <span>{{item.satuan}}</span></h3>
+      <h3>{{item.currentdate}}</h3>
+    
+    </ion-item> -->
+    <br>
+   
+    
+  
+  </ion-list>
+</ion-content>

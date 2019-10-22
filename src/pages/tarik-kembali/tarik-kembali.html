@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-toolbar class="aneh" no-border-top> 
+        <div class="wadahinfo">
+            <span class="info">Apabila terjadi kesalahan dalam mengisi nominal pada saat deposit maka anda bisa membatalkan dan bisa deposit ulang.</span>     
+        </div>
+    </ion-toolbar> 
+</ion-header>
+
+
+<ion-content class="bg">
+    <ion-fab top left>
+        <button ion-fab color="but" (click)="close()" mini><ion-icon name="arrow-round-back"></ion-icon></button>
+    </ion-fab> 
+    
+    
+    <ion-list class="wadahlist">
+        
+        <ion-input type="text" [(ngModel)]="hariini" [value]="hariini2" [hidden]="!hilang"></ion-input>
+        
+        <ion-item *ngFor="let item of (depositListRef | async)?.slice().reverse()" (click)="selectStockItem(item)">
+            <span class="tanggal">{{item.tanggal | date : 'dd/MM/yyyy HH:mm:ss'}}</span><br>
+            <span class="berhasil" *ngIf="item.status== 'Berhasil'">{{item.status}}</span> 
+            <span class="batal" *ngIf="item.status == 'Dibatalkan'">Dibatalkan</span>         
+            <span class="nominal">Rp. {{item.nominal}}</span>
+            
+        </ion-item> 
+        
+  </ion-list>
+  <ion-input type="number" [(ngModel)]="saldoItem.saldo" [hidden]="!hilang"></ion-input> 
+</ion-content>

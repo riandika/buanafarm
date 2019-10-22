@@ -1,0 +1,41 @@
+page-job-list {
+    .bg {
+        
+        background-image: url('../assets/imgs/bgimg2.jpg');
+		background-repeat: no-repeat;
+        background-size: 100% 100%;
+        
+        
+    }
+    ion-item-sliding.isinote {
+        max-width: 95% !important;
+        margin-left: 2%;
+        margin-right: 2%;
+        background: rgba(31, 30, 30, 0);
+        color: color($colors, danger);
+        border-radius: 2px;
+        
+    }
+    ion-item.isinote {
+        max-width: 98% !important;
+        
+        margin-left: 2%;
+        margin-right: 2%;
+        background: rgba(31, 30, 30, 0.548);
+        color: color($colors, wicon);
+        border-radius: 2px;
+        
+    }
+    .tgl {
+        //clear: both;
+        float: right;
+        font-size: 11px;
+        color: rgb(212, 212, 212);
+    }
+    .note {
+        color: #fd4d73;
+        font-size: 12px;
+        max-width: 100% !important;
+        
+    }
+}
